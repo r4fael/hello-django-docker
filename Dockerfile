@@ -26,7 +26,8 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 # criate e set  '.venv'
-RUN python -m venv .venv && source .venv/bin/activate
+RUN python -m venv .venv 
+RUN source .venv/bin/activate
 
 # install dependencies  
 
@@ -39,4 +40,7 @@ RUN pip install -r requirements.txt
 # port where the Django app runs  
 EXPOSE 8000
 # start server  
+
+RUN python manage.py migrate
+
 CMD python manage.py runserver
