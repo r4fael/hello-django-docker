@@ -12,7 +12,11 @@ WORKDIR $DockerHOME
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+# criate e set  '.venv'
+RUN python -m venv .venv && source .venv/bin/activate
+
 # install dependencies  
+
 RUN pip install --upgrade pip
 
 # copy whole project to your docker home directory. 
