@@ -1,13 +1,17 @@
 FROM python:3.12-alpine
 
 #set user
-ARG user=python
+ARG user=deployer
 ARG uid=1000
 
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
+# Adicionar o usuário usando adduser
+RUN adduser -D -u $uid $user
+
+# Criar o diretório de trabalho e ajustar as permissões
 RUN mkdir -p /home/$user/app && \
     chown -R $user:$user /home/$user
 
+# Mudar para o usuário criado
 USER $user
 
 # setup environment variable  
