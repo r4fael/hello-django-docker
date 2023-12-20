@@ -1,9 +1,18 @@
 FROM python:3.12-alpine
-# setup environment variable  
-ENV DockerHOME=/home/app
 
-# set work directory  
-RUN mkdir -p $DockerHOME
+#set user
+ARG user=python
+ARG uid=1000
+
+RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN mkdir -p /home/$user/app && \
+    chown -R $user:$user /home/$user
+
+USER $user
+
+# setup environment variable  
+ENV DockerHOME=/home/$user/app
+
 
 # where your code lives  
 WORKDIR $DockerHOME
