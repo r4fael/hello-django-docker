@@ -12,11 +12,10 @@ services:
         volumes:
             - ./:/home
         ports:
-            - 8001:8000
+            - 8000:8000
         networks:
             - hello-network
 
 networks:
   hello-network:
     driver: bridge
-
