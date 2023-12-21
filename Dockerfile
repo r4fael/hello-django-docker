@@ -1,19 +1,20 @@
 FROM python:3.12-alpine
 
 #set user
-ARG user=deployer
-ARG uid=1000
+#ARG user=deployer
+#ARG uid=1000
 # Adicionar o usuário usando adduser
 # Criar o diretório de trabalho e ajustar as permissões
-RUN adduser -D -u $uid $user  && \
-    mkdir -p /home/$user/app && \
-    chown -R $user:$user /home/$user
+#RUN adduser -D -u $uid $user  && \
+#    mkdir -p /home/$user/app && \
+#    chown -R $user:$user /home/$user
 # Mudar para o usuário criado
-USER $user
+#USER $user
 
 # setup environment variable  
-ENV DockerHOME=/home/$user/app
-ENV PATH="/home/deployer/.local/bin:${PATH}"
+#ENV DockerHOME=/home/$user/app
+ENV DockerHOME=/home
+#ENV PATH="/home/deployer/.local/bin:${PATH}"
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
