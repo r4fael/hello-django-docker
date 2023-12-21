@@ -13,18 +13,21 @@ USER $user
 
 # setup environment variable  
 ENV DockerHOME=/home/$user/app
-# where your code lives  
-WORKDIR $DockerHOME
-
-# set environment variables  
+ENV PATH="/home/deployer/.local/bin:${PATH}"
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install pip and dependencies  
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# where your code lives  
+WORKDIR $DockerHOME
+
 
 # copy whole project to your docker home directory. 
 COPY . $DockerHOME
+
+# install pip and dependencies  
+RUN pip install --upgrade pip 
+# install pip dependencies 
+RUN pip install -r requirements.txt
 
 # port where the Django app runs  
 EXPOSE 8000
