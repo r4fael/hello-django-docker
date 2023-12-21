@@ -1,6 +1,6 @@
 
-<h1>README</h1>
- <p>Requisito: **Python 3.12.0** para rodar localmente **(sem container)**</p>
+# README
+**Requisito: Python 3.12.0 para rodar localmente (sem container)**
 
 1. **Clone o repositório e acesse a pasta**
 
