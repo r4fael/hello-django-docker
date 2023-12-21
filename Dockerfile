@@ -36,4 +36,6 @@ RUN python manage.py migrate
 EXPOSE 8000
 
 # start server  
-CMD ["sh", "-c", "python manage.py runserver"]
+#CMD ["sh", "-c", "python manage.py runserver"]
+
+CMD ["gunicorn", "-c", "gunicorn_config.py", "setup.wsgi:application"]
