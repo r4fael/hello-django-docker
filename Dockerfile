@@ -25,7 +25,7 @@ WORKDIR $DockerHOME
 COPY . $DockerHOME
 
 # install pip and dependencies  
-RUN pip install --upgrade pip 
+RUN python -m pip install --upgrade pip 
 # install pip dependencies 
 RUN pip install -r requirements.txt
 
