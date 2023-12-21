@@ -10,7 +10,7 @@ services:
         restart: unless-stopped
         working_dir: /home
         volumes:
-            - ./:/home
+            - .:/home
         ports:
             - 8000:8000
         networks:
