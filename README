@@ -1,21 +1,24 @@
-Requisito: Python 3.12.0 para rodar localmente (sem container)
 
-1- clone o repositório
+#README
 
-2- crie o ambiente virtual para isolar a aplicação
+##Requisito: Python 3.12.0 para rodar localmente (sem container)
 
-python -m venv .venv
+1. clone o repositório
 
-3- Ative o ambiente
+2. crie o ambiente virtual para isolar a aplicação
 
-source .vent/bin/activate
+``` python -m venv .venv ```
 
-4- rode as migrations
+3. Ative o ambiente
 
-python manage.py migrate
+``` source .vent/bin/activate ```
 
-5- start o servidor
+4. Rode as migrations
 
-python manage.py runserver
+``` python manage.py migrate ```
 
-6- abra o endereço http://127.0.0.1:8000/
+5. Start o servidor
+
+``` python manage.py runserver ```
+
+6. Abra o endereço http://127.0.0.1:8000/
