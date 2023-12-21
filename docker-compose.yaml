@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+    ### image project ###
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: hello-app
+        restart: unless-stopped
+        working_dir: /home
+        volumes:
+            - ./:/home
+        ports:
+            - 8001:8000
+        networks:
+            - hello-network
+
+networks:
+  hello-network:
+    driver: bridge
+
