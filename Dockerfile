@@ -20,17 +20,19 @@ ENV PYTHONUNBUFFERED 1
 # where your code lives  
 WORKDIR $DockerHOME
 
-
 # copy whole project to your docker home directory. 
 COPY . $DockerHOME
 
 # install pip and dependencies  
-RUN python -m pip install --upgrade pip 
-# install pip dependencies 
-RUN pip install -r requirements.txt
+RUN python -m ensurepip --default-pip && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+# run migrations
+RUN python manage.py migrate
 
 # port where the Django app runs  
-EXPOSE 8000
+#EXPOSE 8000
 
-# start migrations and server  
-CMD ["sh", "-c", "python manage.py migrate && python manage.py runserver"]
+# start server  
+CMD ["sh", "-c", "python manage.py runserver"]
