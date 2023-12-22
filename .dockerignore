@@ -33,3 +33,4 @@ docker-compose*
 .git
 .gitignore
 README.md
+db/
