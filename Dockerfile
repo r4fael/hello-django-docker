@@ -15,7 +15,7 @@ WORKDIR $DockerHOME
 COPY . .
 
 # set permissions
-RUN chmod -R 755 $DockerHOME
+#RUN chmod -R 755 $DockerHOME
 
 # install pip and dependencies  
 RUN python -m ensurepip --default-pip && \
