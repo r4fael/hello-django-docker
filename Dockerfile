@@ -1,5 +1,8 @@
 FROM python:3.12-alpine
 
+#Conector MySQL
+RUN apk add --no-cache mariadb-dev build-base bash
+
 # setup environment variable  
 ENV DockerHOME=/home
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -9,7 +12,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR $DockerHOME
 
 # copy whole project to your docker home directory. 
-COPY . $DockerHOME
+COPY . .
 
 # set permissions
 RUN chmod -R 755 $DockerHOME

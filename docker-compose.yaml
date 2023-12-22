@@ -1,5 +1,4 @@
 version: "3.7"
-
 services:
     ### image project ###
     app:
@@ -13,6 +12,23 @@ services:
             - .:/home
         ports:
             - 8000:8000
+        networks:
+            - hello-network
+    ### db mysql ###
+    mysql:
+        image: mysql:8.2.0
+        platform: linux/x86_64
+        container_name: hello-mysql
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes:
+            - ./db:/var/lib/mysql
+        ports:
+            - "3306:3306"
         networks:
             - hello-network
 
