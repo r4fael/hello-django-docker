@@ -1,12 +1,23 @@
 from django.contrib import admin
 from .models import Client, Page, Link, Contract
 
-# Register your models here.
+
+# Modifiers
+class LinkAdmin(admin.ModelAdmin):
+    exclude = ('_click_count',)
+
+
+class ContractInLine(admin.StackedInline):
+    model = Contract
+    min_num = 1
+    extra = 0
 
 class ClientAdmin(admin.ModelAdmin):
-    list_display = ('name', 'cpf', 'create_at', 'update_at')
+    inlines = [ContractInLine]
 
-admin.site.register(Client)
+
+# Register your models here.
+admin.site.register(Link, LinkAdmin)
+admin.site.register(Client, ClientAdmin)
 admin.site.register(Page)
-admin.site.register(Contract)
-admin.site.register(Link)
+
