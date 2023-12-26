@@ -16,8 +16,14 @@ class ClientAdmin(admin.ModelAdmin):
     inlines = [ContractInLine]
 
 
+class PageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'get_links_display')
+    change_list_template = ('Títulosss', 'Links')
+        
+
 # Register your models here.
 admin.site.register(Link, LinkAdmin)
 admin.site.register(Client, ClientAdmin)
-admin.site.register(Page)
+admin.site.register(Page, PageAdmin)
+admin.site.register(Contract)
 
