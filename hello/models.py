@@ -35,7 +35,7 @@ class Link(models.Model):
     update_at = models.DateTimeField(auto_now=True, verbose_name='Atualizado em')
 
     def __str__(self):
-        return f'{self.title} - Página: {self.url}' 
+        return f'{self.title} - {self.url} | {self.page.title}' 
 
 
     def incrementClick(self):
@@ -49,7 +49,7 @@ class Link(models.Model):
 
 class Client(models.Model):
     name = models.CharField(max_length=100, verbose_name='Nome')
-    user = models.OneToOneField(User, on_delete=models.PROTECT, blank=True, verbose_name='Usuário')
+    user = models.OneToOneField(User, on_delete=models.PROTECT, null=True, blank=True, verbose_name='Usuário')
     cpf = models.CharField(max_length=14, unique=True, validators=[cpf_validator], blank=True, verbose_name='CPF')
     phone = models.CharField(max_length=15, null=True, verbose_name='Telefone')
     pages = models.ManyToManyField(Page, through='Contract', verbose_name='Páginas')
